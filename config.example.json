@@ -1,0 +1,7 @@
+{
+  "output_dir": "/sdcard/Ventoy",
+  "jobs": 3,
+  "downloader": "auto",
+  "wake_lock": true,
+  "notify": true
+}

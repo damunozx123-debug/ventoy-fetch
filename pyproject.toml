@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "ventoy-fetch"
+version = "7.0.0"
+description = "Fetch ISOs for Ventoy on Termux"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+[project.scripts]
+ventoy-fetch = "ventoy_fetch.main:main"

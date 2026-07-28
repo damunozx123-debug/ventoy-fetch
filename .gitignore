@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+*.part
+Ventoy-ISOs/
+ventoy_fetch_manifest.json
+config.json
+config.yaml
+*.iso
+*.sig
+*.asc
+.DS_Store
