@@ -1,75 +1,102 @@
-# ventoy_fetch.py
+# Ventoy Fetch
 
-A Termux (Android) script that fetches ISOs for a [Ventoy](https://www.ventoy.net/) multi-boot USB drive: pentest/security distros, general Linux distros, system-recovery tools, and disk-wipe utilities. Runs entirely from your phone — no laptop required.
+**Build a recovery or multiboot ISO collection directly from Termux.**
 
-v7.0 "Touch-Friendly" adds an interactive checklist (`--gui`) on top of everything from earlier versions: concurrent downloads, resume support, checksum/GPG verification, retry with backoff, a JSON manifest, and Termux API integration (wake-lock, notifications, battery check).
+A Python utility for discovering, selecting, downloading and verifying operating-system and recovery ISOs for [Ventoy](https://www.ventoy.net/) USB drives. Designed for Android + Termux, including situations where a desktop computer is unavailable.
 
-## Setup
+![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?logo=python&logoColor=white) ![Platform](https://img.shields.io/badge/Platform-Android%20%2F%20Termux-2d8a68) ![Version](https://img.shields.io/badge/Version-7.0-84d7ff) ![Status](https://img.shields.io/badge/Status-source%20available-75879a)
+
+## At a glance
+
+| Capability | What you get |
+| --- | --- |
+| **Touch-friendly selection** | `--gui` opens a checkbox interface when `dialog` is available, with built-in text selection as a fallback |
+| **Resumable downloads** | Optional `aria2`, concurrent jobs, retry with backoff and resume support |
+| **Integrity reporting** | SHA-256/SHA-512 and GPG verification where upstream checksums/signatures are published |
+| **Flexible collections** | Filter by role such as `pentest`, `recovery` or `distros` |
+| **Phone-aware operation** | Optional Termux wake-lock, notifications and battery checks |
+| **Audit trail** | JSON manifest recording downloads, hashes and whether verification was possible |
+
+> **Safety and transparency:** A download without a trustworthy upstream checksum is marked **unverified**, not silently treated as safe. This tool downloads ISOs; it does **not** partition or flash drives automatically.
+
+## Quick start
+
+In Termux, from the cloned repository:
 
 ```sh
-pkg install curl -y
+pkg install python curl -y
 termux-setup-storage
 python3 ventoy_fetch.py --list
+python3 ventoy_fetch.py --gui
 ```
 
-Optional, all auto-detected if present:
-
-| Package | Adds |
-|---|---|
-| `aria2` | multi-connection downloads (faster than plain curl) |
-| `gnupg` | verifies `.sig`/`.asc` signatures where available |
-| `pyyaml` | lets you use `config.yaml` instead of `config.json` |
-| `dialog` | a real checkbox UI for `--gui` (bare Termux doesn't ship it — without it you get a built-in numbered text selector, which works the same) |
-| `termux-api` package + **Termux:API** app | wake-lock during long fetches, a notification when done, and a low-battery warning |
-
-## Usage
+For a no-download inspection first:
 
 ```sh
-python3 ventoy_fetch.py                # everything that can be auto-fetched
-python3 ventoy_fetch.py --gui          # interactive checklist
-python3 ventoy_fetch.py --role pentest # only pentest-tagged sources
-python3 ventoy_fetch.py --list         # show all sources & available --role values
-python3 ventoy_fetch.py --dry-run      # resolve URLs/sizes, download nothing
-python3 ventoy_fetch.py --verify-only  # re-check hashes of files already on disk
+python3 ventoy_fetch.py --dry-run
 ```
 
-Other flags:
+## Main commands
 
-| Flag | Effect |
-|---|---|
-| `--output-dir PATH` | where ISOs go (default: `config.json`, else `~/storage/shared/Ventoy`) |
-| `--force` | re-download even if a valid file is already there |
-| `--jobs N` | concurrent downloads (default 3 — lower it if you're on mobile data or want to save battery) |
-| `--downloader {auto,curl,aria2}` | pick the transfer tool explicitly |
-| `--no-wake-lock` / `--no-notify` | skip the Termux:API calls |
+```sh
+python3 ventoy_fetch.py                 # fetch all supported automatic sources
+python3 ventoy_fetch.py --gui           # choose images interactively
+python3 ventoy_fetch.py --role pentest  # limit selection to one role
+python3 ventoy_fetch.py --list          # show sources and available roles
+python3 ventoy_fetch.py --dry-run       # resolve metadata; do not download
+python3 ventoy_fetch.py --verify-only   # verify already downloaded files
+```
 
-## Sources
+Useful options:
 
-| Name | Role/category | ~Size |
-|---|---|---|
-| Kali Linux | distros, pentest | 4.5 GB |
-| Parrot OS (Security edition) | distros, pentest | 4.0 GB |
-| CAINE | distros, pentest, forensics | 4.0 GB |
-| Arch Linux | distros | 1.2 GB |
-| Ubuntu Desktop (latest LTS) | distros | 5.4 GB |
-| SystemRescue | recovery | 1.4 GB |
-| Clonezilla | recovery, backup | 500 MB |
-| GParted Live | recovery, partitioning | 700 MB |
-| Boot-Repair-Disk | recovery, boot-repair | 1.0 GB |
-| Rescatux | recovery, boot-repair | 700 MB |
-| Super Grub2 Disk | recovery, boot-repair | 20 MB |
-| Ultimate Boot CD | recovery, diagnostics | 1.0 GB |
-| DBAN | wipe, data-destruction | 20 MB |
-| ShredOS | wipe, data-destruction | 30 MB |
-| Hiren's BootCD PE | recovery, windows-repair | **manual** |
+| Option | Behaviour |
+| --- | --- |
+| `--output-dir PATH` | Destination folder (default via config or `~/storage/shared/Ventoy`) |
+| `--jobs N` | Concurrent download count, default **3** |
+| `--downloader {auto,curl,aria2}` | Choose the download backend |
+| `--force` | Re-fetch when you explicitly want to |
+| `--no-wake-lock` | Do not request a Termux wake-lock |
+| `--no-notify` | Do not use Termux notifications |
 
-Run `--list` any time — it's generated from the same source list this file describes, so it's always current. Everything above is resolved dynamically (latest Kali build, current Ubuntu LTS, latest SourceForge/GitHub release, etc.) rather than pinned to a version, so the script keeps working as upstream projects release new builds.
+## Optional packages
 
-**Hiren's BootCD PE** is the one exception: there's no single stable, official direct-download link to scrape — third-party mirrors bundle ads or other installers, so `--gui` and a normal run both just point you at the official page instead of guessing at a mirror.
+| Package | Additional functionality |
+| --- | --- |
+| `aria2` | Parallel/multiconnection downloads |
+| `gnupg` | Best-effort verification of published `.asc` / `.sig` signatures |
+| `pyyaml` | Support for `config.yaml` |
+| `dialog` | Terminal checklist interface |
+| `termux-api` and the Termux:API app | Wake-lock, notifications and battery checks |
 
-## Config file
+The tool detects optional packages. Their absence should not prevent the built-in basic CLI workflow.
 
-Drop a `config.json` (or `config.yaml` with `pyyaml` installed) next to the script to set defaults — any matching CLI flag overrides it. See `config.example.json`:
+## ISO catalog
+
+Available sources are resolved at runtime where possible; published sizes below are **approximate** and may change.
+
+| Source | Role / purpose | Approximate size |
+| --- | --- | ---: |
+| Kali Linux | Security and pentesting | 4.5 GB |
+| Parrot OS (Security) | Security and pentesting | 4 GB |
+| CAINE | Forensics | 4 GB |
+| Arch Linux | General Linux | 1.2 GB |
+| Ubuntu Desktop LTS | General Linux | 5.4 GB |
+| SystemRescue | Recovery | 1.4 GB |
+| Clonezilla | Backups / recovery | 500 MB |
+| GParted Live | Partitioning | 700 MB |
+| Boot-Repair-Disk | Boot repair | 1 GB |
+| Rescatux | Boot repair | 700 MB |
+| Super Grub2 Disk | Boot repair | 20 MB |
+| Ultimate Boot CD | Diagnostics | 1 GB |
+| DBAN | Drive wiping | 20 MB |
+| ShredOS | Drive wiping | 30 MB |
+| Hiren's BootCD PE | Windows recovery | Manual download |
+
+**Hiren's BootCD PE** is manual-only because the project does not rely on third-party mirrors to guess at an installer URL. For the live list, run `--list`.
+
+## Configuration
+
+Place a `config.json` (or `config.yaml` when PyYAML is installed) beside the script. See [config.example.json](config.example.json). Command-line flags override the corresponding config defaults.
 
 ```json
 {
@@ -81,10 +108,24 @@ Drop a `config.json` (or `config.yaml` with `pyyaml` installed) next to the scri
 }
 ```
 
-## Manifest & verification
+## Verification and manifest
 
-Every run reads/writes `ventoy_fetch_manifest.json` in the output directory: which files were fetched and their hash/status, which failed and why, and which are manual-only. Files are checked against upstream SHA256/SHA512 sums where a project publishes them, and against GPG signatures where `gnupg` is installed and a `.sig`/`.asc` is available; otherwise they're marked `unverified — no upstream checksum available` rather than silently treated as good. `--verify-only` re-runs this check without downloading anything, so you can confirm your Ventoy drive's contents any time.
+Each run maintains `ventoy_fetch_manifest.json` in the output directory. It records which files completed or failed, their associated status and available hashes/signatures. `--verify-only` rechecks local files without downloading new images.
 
-## Putting ISOs on Ventoy
+Verification depends on what publishers actually provide. A file may be explicitly labelled **unverified** if no upstream checksum or signature is available. Always prefer official publisher download channels.
 
-Once files are in your output directory, copy them onto the Ventoy-formatted drive (Termux can read/write it directly if it's exposed as shared storage, or via a USB-OTG connection) — no re-flashing needed, Ventoy just boots whatever `.iso` files it finds on the drive.
+## Copy to Ventoy
+
+After downloading and checking images, copy the finished `.iso` files to the filesystem on a correctly prepared Ventoy USB drive. Ventoy can boot supported images found on that drive without needing to flash each ISO individually.
+
+This tool does **not** create a Ventoy partition layout, bypass device permissions or erase disks. Double-check the destination, particularly for drive-wiping ISO images.
+
+## Contributing and project files
+
+- [Changelog](CHANGELOG.md)
+- [Contributing](CONTRIBUTING.md)
+- [Python project metadata](pyproject.toml)
+- [Tests](tests/)
+- [Configuration example](config.example.json)
+
+Maintained by [Daniel Munoz](https://github.com/damunozx123-debug). The readme describes source functionality, not a claim that every upstream download endpoint has recently been tested.
