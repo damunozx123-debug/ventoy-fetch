@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-label="VENTOY FETCH Ice in Silicon penguin branding">
+ <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#001D1C"/><stop offset=".5" stop-color="#09161B"/><stop offset="1" stop-color="#031310"/></linearGradient><radialGradient id="halo"><stop stop-color="#0F5A56"/><stop offset=".8" stop-color="#022623"/><stop offset="1" stop-color="#24C3CB"/></radialGradient><linearGradient id="glass" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#13D0C3"/><stop offset="1" stop-color="#044D61"/></linearGradient><linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#FFF1AB"/><stop offset=".5" stop-color="#F4B72C"/><stop offset="1" stop-color="#A76A07"/></linearGradient></defs>
+ <rect width="1280" height="640" fill="url(#bg)"/>
+ <g stroke-linecap="round"><path d="M 729.5999999999999 35 h 125 l 20 -16 h 230.39999999999998" stroke="#E5B952" stroke-width="3" fill="none" opacity=".35"/><circle cx="1105" cy="19" r="4" fill="#CFB160"/><path d="M 736.5999999999999 83 h 133 l 20 16 h 219.39999999999998" stroke="#00BDA2" stroke-width="2" fill="none" opacity=".35"/><circle cx="1109" cy="99" r="4" fill="#CFB160"/><path d="M 743.5999999999999 131 h 141 l 20 -16 h 208.39999999999998" stroke="#00BDA2" stroke-width="3" fill="none" opacity=".35"/><circle cx="1113" cy="115" r="4" fill="#CFB160"/><path d="M 750.5999999999999 179 h 149 l 20 16 h 197.39999999999998" stroke="#E5B952" stroke-width="2" fill="none" opacity=".35"/><circle cx="1117" cy="195" r="4" fill="#CFB160"/><path d="M 757.5999999999999 227 h 157 l 20 -16 h 186.39999999999998" stroke="#00BDA2" stroke-width="3" fill="none" opacity=".35"/><circle cx="1121" cy="211" r="4" fill="#CFB160"/><path d="M 764.5999999999999 275 h 165 l 20 16 h 175.39999999999998" stroke="#00BDA2" stroke-width="2" fill="none" opacity=".35"/><circle cx="1125" cy="291" r="4" fill="#CFB160"/><path d="M 771.5999999999999 323 h 173 l 20 -16 h 164.39999999999998" stroke="#E5B952" stroke-width="3" fill="none" opacity=".35"/><circle cx="1129" cy="307" r="4" fill="#CFB160"/><path d="M 778.5999999999999 371 h 181 l 20 16 h 153.39999999999998" stroke="#00BDA2" stroke-width="2" fill="none" opacity=".35"/><circle cx="1133" cy="387" r="4" fill="#CFB160"/></g>
+ <g stroke="#DDFBFD" stroke-opacity=".7" stroke-width="2" fill="none"><path d="M0 20 H1280 M0 620 H1280"/></g>
+ <path d="M0 0 H1280 V14 Q640 8 0 14Z" fill="#B8F8FB" opacity=".07"/>
+ <g fill="#D6FAFF" opacity=".8"><path d="M56 0 l4 31 9-13 4 25 10-43 M1150 0 l7 48 10-19 9 26 13-55"/><path d="M36 640 l7-26 9 15 9-31 6 42 M1190 640 l7-32 8 10 8-27 7 49"/></g>
+ <g transform="translate(278,303) scale(1.3111111111111111)">
+ <circle r="177" fill="url(#halo)" stroke="#5BFAEF" stroke-width="5"/>
+ <circle r="163" fill="none" stroke="#D6FBFF" stroke-opacity=".6" stroke-width="1.5" stroke-dasharray="3 10"/>
+ <path d="M-116 24 Q-146-82 -86-135 Q-15-196 83-137 Q161-65 122 53 Q119 116 62 135 Q0 164 -67 130 Q-131 94 -116 24Z" fill="#101720" stroke="#405C66" stroke-width="4"/>
+ <path d="M-91 22 Q-73-12 -27 8 Q13 42 12 91 Q-16 133 -71 112 Q-103 73 -91 22Z" fill="#ECF6F7"/>
+ <path d="M93 22 Q72-12 27 8 Q-14 42 -12 91 Q17 133 70 112 Q105 74 93 22Z" fill="#E4F6FA"/>
+ <ellipse cx="-58" cy="27" rx="43" ry="51" fill="#FCFDFF" stroke="#131922" stroke-width="6"/>
+ <ellipse cx="59" cy="27" rx="43" ry="51" fill="#FCFDFF" stroke="#131922" stroke-width="6"/>
+ <ellipse cx="-43" cy="30" rx="19" ry="30" fill="#008E97"/><ellipse cx="45" cy="30" rx="19" ry="30" fill="#008E97"/>
+ <ellipse cx="-40" cy="33" rx="10" ry="19" fill="#111722"/><ellipse cx="46" cy="33" rx="10" ry="19" fill="#111722"/>
+ <circle cx="-48" cy="17" r="6" fill="#FFFFFF"/><circle cx="37" cy="17" r="6" fill="#FFFFFF"/>
+ <path d="M-102 -17 Q-62-42 -17-8 M17-8 Q61-39 106-14" stroke="#0A141A" stroke-width="12" stroke-linecap="round" fill="none"/>
+ <path d="M-57 59 Q0 30 57 59 Q43 94 -2 106 Q-45 91 -57 59Z" fill="url(#gold)" stroke="#996318" stroke-width="4"/>
+ <path d="M-28 61 Q8 51 37 63" fill="none" stroke="#FFE4A1" stroke-width="4"/>
+ <path d="M-127 93 Q-82 116 0 119 Q78 113 128 90 L106 150 Q0 171 -106 145Z" fill="#005D57" stroke="#D3AC4C" stroke-width="7"/>
+ <path d="M-111 128 L-70 128 L-46 145 L-12 145 M30 149 L67 130 L107 130" stroke="#F2C85C" stroke-width="3" fill="none"/>
+ <path d="M-110 -89 Q-75 -117 -17 -95 L-10 -53 Q-70 -36 -112 -62Z" fill="url(#glass)" stroke="#BDC9D3" stroke-width="8"/>
+ <path d="M108 -89 Q67 -115 19 -95 L11 -53 Q72 -34 111 -63Z" fill="url(#glass)" stroke="#BDC9D3" stroke-width="8"/>
+ <path d="M-13 -78 L13 -78" stroke="#DCB353" stroke-width="14" stroke-linecap="round"/>
+ <path d="M-89 -81 L-53 -66 L-30 -77 M42 -65 L71 -75 L90 -67" stroke="#E7C25A" stroke-width="3" fill="none"/>
+ <path d="M-125 -72 L-146 -43 M124 -71 L144 -40" stroke="#BAAE95" stroke-width="12"/>
+ <path d="M-95 -111 l5 15 l6 -9 l7 18 M60 -113 l6 19 l5 -14 l8 18" stroke="#DCF9FF" stroke-width="4" fill="none"/>
+ <path d="M-115 -121 l11 18 l8 -11 l9 16 M101 -123 l7 17 l9 -13 l8 18" stroke="#BBF8FF" stroke-width="3" fill="none"/>
+ <path d="M-103 -143 Q0 -211 117 -139" stroke="#A6FBFF" stroke-width="9" stroke-linecap="round" fill="none" opacity=".8"/>
+ <circle cx="-17" cy="-17" r="3" fill="#D0F7FF"/><circle cx="9" cy="-29" r="4" fill="#D8F8FF"/><circle cx="29" cy="-13" r="2" fill="#D0F7FF"/>
+ </g><rect x="568" y="200" width="655" height="250" rx="16" fill="#001715" fill-opacity=".75" stroke="#D9C16E" stroke-opacity=".6" stroke-width="2"/><text x="603" y="302" font-family="Arial, Helvetica, sans-serif" font-size="68" font-weight="800" fill="#F2FAFF">VENTOY FETCH</text><path d="M 603 325 h 455" stroke="#DABC70" stroke-width="5"/><text x="604" y="381" font-family="Arial, Helvetica, sans-serif" font-size="23" fill="#B6F5ED">Multi-boot utilities • downloads • verification</text>
+ <text x="1255" y="612" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#BBD8D7" opacity=".8">ICE IN SILICON  •  PCB / FROST / GOLD / SILVER</text>
+ </svg>

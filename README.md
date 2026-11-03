@@ -1,3 +1,5 @@
+![VENTOY FETCH | Ice in Silicon banner](assets/ice-in-silicon/readme-banner.svg)
+
 # Ventoy Fetch
 
 > **👋 Meet the maker:** I'm [Daniel Munoz](https://github.com/damunozx123-debug/ventoy-fetch/blob/master/PORTFOLIO.md), an Auckland-based Linux/Android problem-solver open to [**junior IT opportunities**](mailto:damunozx123@gmail.com?subject=IT%20work%20opportunity), [**paid troubleshooting**](https://github.com/damunozx123-debug/ventoy-fetch/blob/master/WORK_WITH_ME.md) and useful collaborations. [**See the project shelf →**](https://github.com/damunozx123-debug/ventoy-fetch/blob/master/PROJECTS.md)
