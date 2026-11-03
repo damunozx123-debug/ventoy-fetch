@@ -1,3 +1,5 @@
+> **Want the automated version?** Run the [Termux GitHub bootstrap](AUTOMATE_PROFILE_AND_ORG.md). It can create the profile repository, update profile fields, request GitHub Pages, and set up organisation files after you create the organisation. This document covers manual account settings still required.
+
 # ⚡ Finish account-level branding
 
 The public portfolio, service offer, project showcase, banner SVG and optional static website are already published in **ventoy-fetch**. GitHub's connected tools can update repository contents but **not** edit your account photo, bio, company or pinned repositories, and cannot create a new repository.

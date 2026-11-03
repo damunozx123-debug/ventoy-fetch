@@ -10,6 +10,8 @@
 - Project evidence: [PROJECTS.md](PROJECTS.md)
 - Website source: [docs/index.html](docs/index.html)
 - Organisation profile and contributor/security templates: [org-kit/](org-kit/)
+- Business operating plan: [org-kit/OPERATING_PLAN.md](org-kit/OPERATING_PLAN.md)
+- Public release checklist: [org-kit/RELEASE_CHECKLIST.md](org-kit/RELEASE_CHECKLIST.md)
 
 ## One-copy setup from Android/Termux
 
@@ -29,7 +31,7 @@ The first run asks you to authorise GitHub through its official login flow if yo
 2. Publishes the matching README from PROFILE_README.md, backing up previous versions locally before updates.
 3. Attempts to set personal display name, bio, location and hireable status via GitHub's user API.
 4. Attempts to enable GitHub Pages for this repository from master/docs.
-5. If you own the proposed GitHub organisation, creates its **public .github repository**, profile README and common issue/security/contribution templates.
+5. If you own the proposed GitHub organisation, creates its **public .github repository**, profile README and common issue/security/contribution templates plus an operating plan and release-readiness checklist.
 
 The script is idempotent for matching file content; reruns reuse existing repositories. It will **not** transfer or publish any of your private app repositories.
 
