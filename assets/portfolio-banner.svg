@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="240" viewBox="0 0 1200 240" role="img" aria-label="Daniel Munoz. Mod it. Fix it. Automate it.">
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#080b13"/><stop offset=".55" stop-color="#16131e"/><stop offset="1" stop-color="#05070c"/></linearGradient><linearGradient id="red" x2="0" x1="1"><stop stop-color="#ff5c68"/><stop offset="1" stop-color="#c91638"/></linearGradient></defs>
+<rect width="1200" height="240" rx="20" fill="url(#bg)"/>
+<g opacity=".21" stroke="#fe364b" stroke-width="1"><path d="M0 50H1200 M0 110H1200 M0 170H1200 M80 0V240 M240 0V240 M400 0V240 M560 0V240 M720 0V240 M880 0V240 M1040 0V240"/></g>
+<rect x="18" y="18" width="1164" height="204" rx="14" fill="none" stroke="#c52542" stroke-width="2"/>
+<g transform="translate(45,38)"><rect x="3" y="2" width="154" height="160" rx="28" fill="#181824" stroke="#fa3050" stroke-width="4"/><ellipse cx="82" cy="88" rx="55" ry="66" fill="#05070c"/><ellipse cx="82" cy="111" rx="40" ry="37" fill="#eceef2"/><ellipse cx="54" cy="76" rx="19" ry="15" fill="#e7edf0"/><ellipse cx="110" cy="76" rx="19" ry="15" fill="#e7edf0"/><circle cx="61" cy="76" r="7" fill="#111522"/><circle cx="103" cy="76" r="7" fill="#111522"/><path d="M70 94L97 94L83 109Z" fill="#ff9a26"/><path d="M38 54Q82 31 126 54" fill="none" stroke="#ff304b" stroke-width="7"/><circle cx="49" cy="52" r="15" fill="#191d28" stroke="#c1d2dc" stroke-width="4"/><circle cx="116" cy="52" r="15" fill="#191d28" stroke="#c1d2dc" stroke-width="4"/></g>
+<text x="240" y="92" fill="#ffffff" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="57" letter-spacing="1">DANIEL <tspan fill="url(#red)">MUNOZ</tspan></text>
+<text x="243" y="139" fill="#f1f4f8" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="30" letter-spacing="6">MOD IT. FIX IT. AUTOMATE IT.</text>
+<text x="244" y="179" fill="#bfc7d3" font-family="Arial,Helvetica,sans-serif" font-size="18" letter-spacing="2">LINUX  /  ANDROID  /  NETWORKING  /  HARDWARE  /  AI</text>
+<path d="M242 194H1130" stroke="#df2b47" stroke-width="3"/>
+</svg>
