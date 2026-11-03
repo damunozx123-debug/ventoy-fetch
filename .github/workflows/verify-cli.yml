@@ -1,0 +1,47 @@
+name: CLI verification and catalog screenshot
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'ventoy_fetch.py'
+      - 'pyproject.toml'
+      - 'scripts/render_catalog_screenshot.py'
+      - '.github/workflows/verify-cli.yml'
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  cli:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install and smoke test actual entrypoint
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install . pillow
+          python -m compileall -q ventoy_fetch.py
+          ventoy-fetch --help
+          ventoy-fetch --list | tee /tmp/ventoy-list.txt
+      - name: Render captured terminal output to PNG
+        run: python scripts/render_catalog_screenshot.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ventoy-cli-screenshot
+          path: docs/screenshots/catalog-cli.png
+          retention-days: 30
+      - name: Commit screenshot on master
+        if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/screenshots/catalog-cli.png
+          if ! git diff --cached --quiet; then
+            git commit -m "docs: capture verified CLI catalog [skip ci]"
+            git push origin HEAD:master
+          fi
