@@ -1,0 +1,40 @@
+name: Bug report
+description: Report a reproducible problem without sharing secrets or sensitive data
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: "Thanks for testing. Please redact all passwords, API keys, personal data and customer identifiers."
+  - type: input
+    id: version
+    attributes:
+      label: Project and version
+      placeholder: "Project / commit / release"
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      placeholder: "1. ... 2. ... 3. ..."
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and actual behaviour
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      placeholder: "OS / device / version / logs with sensitive data removed"
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Before submitting
+      options:
+        - label: "I have removed secrets, private identifiers and unauthorised scan data."
+          required: true
