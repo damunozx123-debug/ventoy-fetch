@@ -1,6 +1,10 @@
 # Ventoy Fetch
 
 > **👋 Meet the maker:** I'm [Daniel Munoz](https://github.com/damunozx123-debug/ventoy-fetch/blob/master/PORTFOLIO.md), an Auckland-based Linux/Android problem-solver open to [**junior IT opportunities**](mailto:damunozx123@gmail.com?subject=IT%20work%20opportunity), [**paid troubleshooting**](https://github.com/damunozx123-debug/ventoy-fetch/blob/master/WORK_WITH_ME.md) and useful collaborations. [**See the project shelf →**](https://github.com/damunozx123-debug/ventoy-fetch/blob/master/PROJECTS.md)
+**🚀 [Download source ZIP](https://github.com/damunozx123-debug/ventoy-fetch/archive/refs/heads/master.zip)** · **[Try the setup guide](#quick-start)** · **[Report a bug](https://github.com/damunozx123-debug/ventoy-fetch/issues)** · ⭐ **[Star this repository](https://github.com/damunozx123-debug/ventoy-fetch)** if it helped you.
+
+*Source ZIP is Python code for Termux, not an installable Android APK; follow the setup instructions below.*
+
 
 **Build a recovery or multiboot ISO collection directly from Termux.**
 
