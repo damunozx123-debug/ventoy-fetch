@@ -10,7 +10,7 @@
 
 A Python utility for discovering, selecting, downloading and verifying operating-system and recovery ISOs for [Ventoy](https://www.ventoy.net/) USB drives. Designed for Android + Termux, including situations where a desktop computer is unavailable.
 
-![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?logo=python&logoColor=white) ![Platform](https://img.shields.io/badge/Platform-Android%20%2F%20Termux-2d8a68) ![Version](https://img.shields.io/badge/Version-7.0-84d7ff) ![Status](https://img.shields.io/badge/Status-source%20available-75879a)
+![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white) ![Platform](https://img.shields.io/badge/Platform-Android%20%2F%20Termux-2d8a68) ![Version](https://img.shields.io/badge/Version-7.0-84d7ff) ![Status](https://img.shields.io/badge/Status-source%20available-75879a)
 
 ## At a glance
 
@@ -143,3 +143,12 @@ Maintained by [Daniel Munoz](https://github.com/damunozx123-debug). The readme d
 
 I'm Dan, an independent developer experimenting with Linux, Android/Termux, automation and practical modifications. I like building tools that make complicated tasks easier. The penguin is my creator mascot, not a claim of project certification or endorsement.
 
+## Install guides and real CLI screenshot
+
+- [Termux step-by-step installation](docs/INSTALL_TERMUX.md)
+- [Screenshot provenance and capture guide](docs/SCREENSHOTS.md)
+- [CLI installer verification workflow](.github/workflows/verify-cli.yml)
+
+![Actual Ventoy Fetch catalog CLI output from Linux CI](docs/screenshots/catalog-cli.png)
+
+*This is a real command output capture from an automated Linux runner, not an Android screenshot or proof of ISO booting.*
