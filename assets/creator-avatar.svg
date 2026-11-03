@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-label="Relaxed cyber-engineer penguin mascot headshot">
+<defs><linearGradient id="hood" x1="0" y1="0" x2="0.9" y2="1"><stop stop-color="#28222d"/><stop offset="1" stop-color="#110f17"/></linearGradient><linearGradient id="beak" x1="0" y1="0" x2="0.9" y2="1"><stop stop-color="#ffd054"/><stop offset=".65" stop-color="#f7a913"/><stop offset="1" stop-color="#e47b00"/></linearGradient></defs>
+<circle cx="512" cy="512" r="492" fill="#110f18" stroke="#e92336" stroke-width="22"/>
+<path d="M122 856Q157 686 309 636Q228 514 280 347Q314 224 448 200Q580 167 696 246Q785 300 772 431Q788 579 697 655Q863 710 906 858Q789 960 514 966Q236 956 122 856Z" fill="url(#hood)" stroke="#07080b" stroke-width="27" stroke-linejoin="round"/>
+<path d="M185 830Q224 689 346 663Q278 547 307 368Q350 247 471 220Q650 172 742 349Q753 409 741 468" fill="none" stroke="#f0243b" stroke-width="25" stroke-linecap="round"/>
+<path d="M305 483Q317 357 404 308Q489 266 595 297Q682 320 722 405Q755 496 687 602Q626 691 515 702Q398 686 337 604Q305 558 305 483Z" fill="#faf6f0" stroke="#101116" stroke-width="20"/>
+<path d="M309 510Q324 377 400 326Q446 296 500 293Q479 352 451 388Q414 443 427 500Q397 559 419 639Q352 601 309 510Z" fill="#121118"/>
+<path d="M698 427Q658 360 604 332Q562 310 520 295Q545 357 563 396Q605 432 625 502Q650 554 624 639Q702 586 710 483Z" fill="#131119"/>
+<path d="M388 468Q441 489 489 460" fill="none" stroke="#15141a" stroke-width="17" stroke-linecap="round"/><path d="M550 460Q605 478 646 450" fill="none" stroke="#15141a" stroke-width="17" stroke-linecap="round"/>
+<path d="M467 531Q546 495 620 526Q645 539 666 554Q616 614 544 615Q485 609 454 571Z" fill="url(#beak)" stroke="#1b1413" stroke-width="14" stroke-linejoin="round"/><path d="M475 567Q543 589 633 552" fill="none" stroke="#8c4c00" stroke-width="7" stroke-linecap="round"/>
+<path d="M342 299Q417 204 503 226Q568 192 660 244" fill="none" stroke="#272530" stroke-width="54" stroke-linecap="round"/>
+<g transform="rotate(-14 444 282)"><rect x="354" y="229" rx="40" width="186" height="120" fill="#18141d" stroke="#f33649" stroke-width="19"/><rect x="374" y="248" rx="27" width="148" height="81" fill="#302c37" stroke="#a7a4ae" stroke-width="8"/></g>
+<g transform="rotate(16 635 272)"><rect x="565" y="215" rx="34" width="142" height="114" fill="#19141c" stroke="#f33649" stroke-width="18"/><rect x="582" y="232" rx="22" width="108" height="80" fill="#2a2833" stroke="#a8a2ad" stroke-width="7"/></g>
+<circle cx="294" cy="464" r="91" fill="#16131b" stroke="#b2adb9" stroke-width="18"/><circle cx="294" cy="464" r="67" fill="#18141e" stroke="#f0293b" stroke-width="19"/><circle cx="294" cy="464" r="36" fill="#0c0e12"/>
+<path d="M318 703Q497 797 718 689Q799 714 840 855Q664 945 513 941Q314 946 183 856Q224 740 318 703Z" fill="#1d1a24" stroke="#0e0d12" stroke-width="21"/>
+<path d="M336 707Q423 795 504 794Q613 801 707 704" fill="none" stroke="#f12c40" stroke-width="18" stroke-linecap="round"/><path d="M505 801L500 923" stroke="#49414d" stroke-width="11"/>
+</svg>
