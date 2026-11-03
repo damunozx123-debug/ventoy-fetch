@@ -1,0 +1,35 @@
+name: Validate portfolio bootstrap
+on:
+  push:
+    branches: [master]
+    paths:
+      - "scripts/bootstrap-profile-org.sh"
+      - "org-kit/**"
+      - ".github/workflows/validate-portfolio-bootstrap.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate bootstrap shell syntax
+        run: bash -n scripts/bootstrap-profile-org.sh
+      - name: Validate org templates are present
+        run: |
+          test -s org-kit/profile/README.md
+          test -s org-kit/SECURITY.md
+          test -s org-kit/CONTRIBUTING.md
+          test -s org-kit/ISSUE_TEMPLATE/bug_report.yml
+          test -s org-kit/PULL_REQUEST_TEMPLATE.md
+          python3 - <<'PY'
+          from pathlib import Path
+          s = Path("scripts/bootstrap-profile-org.sh").read_text()
+          assert "gh auth login" in s
+          assert 'ACTUAL_OWNER' in s
+          assert 'publish_file' in s
+          assert "--field \"hireable=true\"" in s
+          assert "gh repo create" in s
+          print("Bootstrap checks passed")
+          PY
