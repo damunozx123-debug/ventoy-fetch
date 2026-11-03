@@ -129,3 +129,11 @@ This tool does **not** create a Ventoy partition layout, bypass device permissio
 - [Configuration example](config.example.json)
 
 Maintained by [Daniel Munoz](https://github.com/damunozx123-debug). The readme describes source functionality, not a claim that every upstream download endpoint has recently been tested.
+
+
+## Behind the project
+
+<img src="assets/creator-avatar.svg" width="112" alt="Relaxed penguin engineer mascot" align="right"/>
+
+I'm Dan, an independent developer experimenting with Linux, Android/Termux, automation and practical modifications. I like building tools that make complicated tasks easier. The penguin is my creator mascot, not a claim of project certification or endorsement.
+
