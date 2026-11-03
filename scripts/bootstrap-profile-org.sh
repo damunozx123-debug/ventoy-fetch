@@ -73,7 +73,7 @@ if [ "$SCOPE" = "all" ] || [ "$SCOPE" = "profile" ]; then
     log "Created public GitHub profile repository"
   fi
   publish_file "$OWNER/$OWNER" "README.md" "$TEMP_DIR/profile.md"
-  if gh api --method PATCH user --field "name=Daniel Munoz" --field "location=Auckland, New Zealand" --field "bio=⚡ Mod it. Fix it. Automate it. | Linux • Android • Networking | Building useful tools | Open to IT roles, paid tech work & collaborations 🇳🇿" --raw-field "hireable=true" >/dev/null 2>&1; then
+  if gh api --method PATCH user --field "name=Daniel Munoz" --field "location=Auckland, New Zealand" --field "bio=⚡ Mod it. Fix it. Automate it. | Linux • Android • Networking | Building useful tools | Open to IT roles, paid tech work & collaborations 🇳🇿" --field "hireable=true" >/dev/null 2>&1; then
     log "Updated GitHub name, bio, location and hireable indicator."
   else
     warn "Profile fields unchanged; GitHub OAuth may need Profile write permission. Try gh auth refresh -s user, then rerun."
