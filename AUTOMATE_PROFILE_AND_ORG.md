@@ -61,3 +61,21 @@ If you choose another slug, substitute it in that command. The script checks tha
 **Munoz Tech Labs organisation** = public-facing umbrella for collaboration, services and future releases, without hiding your actual experience or making invented business claims.
 
 **Private prototypes remain private.** Do not equate a simulated demo with paid deployments or a source ZIP with a downloadable Android APK.
+
+## Repairing an older bootstrap (4 November 2026)
+
+If an earlier run printed `gh: Not Found (HTTP 404)`, `base64: invalid input` and `Couldn't back up ...; skipping`, that version contained a bug handling **files that do not exist yet**. It may have created the public organisation's `.github` repository without uploading its profile files.
+
+**Fixed:** commit [0b78169](https://github.com/damunozx123-debug/ventoy-fetch/commit/0b7816963dff229aac15034d1d3106a17f20ee1b). A [CI regression test](https://github.com/damunozx123-debug/ventoy-fetch/actions/runs/41754854568) exercises simulated 404, existing files, backups and 403 denial.
+
+Download the corrected script (this command explicitly overwrites your old local copy), then run org-only mode:
+
+```sh
+curl -fL https://raw.githubusercontent.com/damunozx123-debug/ventoy-fetch/0b7816963dff229aac15034d1d3106a17f20ee1b/scripts/bootstrap-profile-org.sh -o bootstrap-profile-org.sh
+bash -n bootstrap-profile-org.sh
+ORG_SLUG=munoz-tech-labs bash bootstrap-profile-org.sh org
+```
+
+When successful, expect **seven `Verified:` lines**, then `Organization homepage ready`. If GitHub denies access with a 403 error, the corrected script stops rather than pretending to have published files. No private repositories are transferred.
+
+Confirm the public homepage at https://github.com/munoz-tech-labs and the backing profile file at https://github.com/munoz-tech-labs/.github/blob/main/profile/README.md.
