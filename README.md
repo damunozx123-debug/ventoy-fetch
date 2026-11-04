@@ -2,6 +2,19 @@
 
 # Ventoy Fetch
 
+## One-action install (Termux / Linux)
+
+**Recommended:** In Termux, paste this once:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/damunozx123-debug/ventoy-fetch/master/install.sh | bash
+```
+
+The installer acquires required system packages, handles the Android storage-permission prompt, copies the Python-standard-library application into private writable storage, and launches its interactive selector. It does **not** compile source or require pip, a ZIP extractor or chmod. Review [install.sh](install.sh) before executing the remote script. For offline checkouts: `bash install.sh`.
+
+Subsequent launches: `~/.local/bin/ventoy-fetch --gui`. Optional aria2, GPG, YAML and Termux:API integrations remain optional; they are not downloaded when unused.
+
+
 > **👋 Meet the maker:** I'm [Daniel Munoz](https://github.com/damunozx123-debug/ventoy-fetch/blob/master/PORTFOLIO.md), an Auckland-based Linux/Android problem-solver open to [**junior IT opportunities**](mailto:damunozx123@gmail.com?subject=IT%20work%20opportunity), [**paid troubleshooting**](https://github.com/damunozx123-debug/ventoy-fetch/blob/master/WORK_WITH_ME.md) and useful collaborations. [**See the project shelf →**](https://github.com/damunozx123-debug/ventoy-fetch/blob/master/PROJECTS.md)
 **🚀 [Download source ZIP](https://github.com/damunozx123-debug/ventoy-fetch/archive/refs/heads/master.zip)** · **[Try the setup guide](#quick-start)** · **[Report a bug](https://github.com/damunozx123-debug/ventoy-fetch/issues)** · ⭐ **[Star this repository](https://github.com/damunozx123-debug/ventoy-fetch)** if it helped you.
 
