@@ -38,31 +38,63 @@ fetch_template() {
   test -s "$destination" || die "Missing template: $name"
 }
 
-# Updates one file using the GitHub Contents API; backs up previous content on this device.
+# Publish a file using the GitHub Contents API. Treat HTTP 404 as a new file,
+# never as an existing file to back up. Other API failures stop execution.
+# Existing content is backed up locally before changes.
 publish_file() {
-  local target_repo="$1" target_path="$2" source_file="$3" old_sha="" encoded="" backup=""
-  old_sha="$(gh api "repos/$target_repo/contents/$target_path" --jq '.sha' 2>/dev/null || true)"
+  local target_repo="$1" target_path="$2" source_file="$3"
+  local old_sha="" encoded="" backup="" error_file="" sha_file="" verified_sha=""
+  error_file="$(mktemp "$TEMP_DIR/gh-api-error.XXXXXX")"
+  sha_file="$(mktemp "$TEMP_DIR/gh-api-sha.XXXXXX")"
+
+  if gh api "repos/$target_repo/contents/$target_path" --jq '.sha' > "$sha_file" 2> "$error_file"; then
+    old_sha="$(tr -d '\r\n' < "$sha_file")"
+    if [[ ! "$old_sha" =~ ^[0-9a-fA-F]{40,64}$ ]]; then
+      cat "$error_file" >&2
+      die "Unexpected API SHA for $target_repo/$target_path: $(printf '%s' "$old_sha" | head -c 100)"
+    fi
+  elif grep -qE 'HTTP 404|\(404\)' "$error_file"; then
+    old_sha=""
+    log "New file: $target_repo/$target_path"
+  else
+    cat "$error_file" >&2
+    die "Cannot inspect $target_repo/$target_path. Stopping instead of assuming it is absent."
+  fi
+
   if [ -n "$old_sha" ]; then
     backup="$BACKUP_DIR/$(echo "$target_repo--$target_path" | tr '/' '_')"
-    if gh api "repos/$target_repo/contents/$target_path" --jq '.content' | tr -d '\r\n' | base64 --decode > "$backup"; then
-      if cmp -s "$backup" "$source_file"; then
-        log "Already current: $target_repo/$target_path"
-        return
-      fi
-      log "Previous version saved locally: $backup"
-    else
+    if ! gh api "repos/$target_repo/contents/$target_path" --jq '.content' 2>"$error_file" | tr -d '\r\n' | base64 --decode >"$backup"; then
       rm -f "$backup"
-      warn "Couldn't back up $target_repo/$target_path; skipping the update."
-      return
+      cat "$error_file" >&2
+      die "Couldn't back up $target_repo/$target_path. Stopping; no overwrite."
     fi
+    chmod 600 "$backup"
+    if cmp -s "$backup" "$source_file"; then
+      log "Already current: $target_repo/$target_path"
+      return 0
+    fi
+    log "Backed up prior version locally: $backup"
   fi
+
   encoded="$(python3 -c 'import base64,sys; print(base64.b64encode(open(sys.argv[1],"rb").read()).decode("ascii"))' "$source_file")"
   if [ -n "$old_sha" ]; then
-    gh api --method PUT "repos/$target_repo/contents/$target_path" --field "message=Update public profile and community documentation" --field "content=$encoded" --field "sha=$old_sha" >/dev/null
+    gh api --method PUT "repos/$target_repo/contents/$target_path" \
+      --field "message=Update public profile and community documentation" \
+      --field "content=$encoded" --field "sha=$old_sha" >/dev/null ||
+      die "GitHub rejected update of $target_repo/$target_path"
   else
-    gh api --method PUT "repos/$target_repo/contents/$target_path" --field "message=Publish public profile and community documentation" --field "content=$encoded" >/dev/null
+    gh api --method PUT "repos/$target_repo/contents/$target_path" \
+      --field "message=Publish public profile and community documentation" \
+      --field "content=$encoded" >/dev/null ||
+      die "GitHub rejected creation of $target_repo/$target_path"
   fi
-  log "Published: https://github.com/$target_repo/blob/HEAD/$target_path"
+
+  verified_sha="$(gh api "repos/$target_repo/contents/$target_path" --jq '.sha' 2>"$error_file")" ||
+    die "Created $target_path, but could not verify it on GitHub"
+  if [[ ! "$verified_sha" =~ ^[0-9a-fA-F]{40,64}$ ]]; then
+    die "Unexpected verification response for $target_repo/$target_path"
+  fi
+  log "Verified: https://github.com/$target_repo/blob/HEAD/$target_path"
 }
 
 if [ "$SCOPE" = "all" ] || [ "$SCOPE" = "profile" ]; then
