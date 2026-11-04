@@ -4,6 +4,7 @@ on:
     branches: [master]
     paths:
       - "scripts/bootstrap-profile-org.sh"
+      - "tests/test-bootstrap-org.sh"
       - "org-kit/**"
       - ".github/workflows/validate-portfolio-bootstrap.yml"
   workflow_dispatch:
@@ -33,3 +34,5 @@ jobs:
           assert "gh repo create" in s
           print("Bootstrap checks passed")
           PY
+      - name: Test org bootstrap with mocked GitHub 404 and 403 responses
+        run: bash tests/test-bootstrap-org.sh
